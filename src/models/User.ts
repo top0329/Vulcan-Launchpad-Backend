@@ -43,8 +43,33 @@ const UserSchema: Schema = new Schema({
   avatar: {
     type: String
   },
-  socialLink: {
-    type: String
+  website: {
+    type: String,
+    required: true,
+  },
+  twitter: {
+    type: String,
+    required: true,
+  },
+  linkedin: {
+    type: String,
+    required: true,
+  },
+  facebook: {
+    type: String,
+    required: true,
+  },
+  instagram: {
+    type: String,
+    required: true,
+  },
+  farcaster: {
+    type: String,
+    required: true,
+  },
+  lens: {
+    type: String,
+    required: true,
   },
   bio: {
     type: String,
@@ -87,10 +112,16 @@ interface UserData {
   fullName: string,
   company: string,
   avatar: string,
-  socialLink: string, 
   bio: string,
   ip: string,
   created: Date
+  website: string,
+  twitter: string,
+  linkedin: string,
+  facebook: string,
+  instagram: string,
+  farcaster: string,
+  lens: string, 
 }
 
 const findUserDataByUserName = async (

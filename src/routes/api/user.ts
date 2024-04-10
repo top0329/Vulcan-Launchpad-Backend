@@ -27,7 +27,13 @@ interface AuthRequest extends Request {
     company: string,
     avatar: string,
     bio: string,
-    socialLink: string
+    website: string,
+    twitter: string,
+    linkedin: string,
+    facebook: string,
+    instagram: string,
+    farcaster: string,
+    lens: string,
   };
 }
 
@@ -67,11 +73,11 @@ router.post("/signin", async (req: Request, res: Response) => {
         { data: _user },
         config.jwtSecret,
         { expiresIn: 60 * 60 * 24 }
-      )
+      );
       console.log("user signin------>", _user.fullName);
       res.json({ status: "SUCCESS", data: token });
     } else {
-      res.json({ status: "NONE", data: "Not registered user, Please register!" })
+      res.json({ status: "NONE", data: "Not registered user, Please register!" });
     }
   } catch (err) {
     res.status(500).json({ status: "ERR", data: err })
