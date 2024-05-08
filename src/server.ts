@@ -3,6 +3,8 @@ import cors from "cors";
 import Moralis from "moralis";
 
 import user from "./routes/api/user";
+import utils from "./routes/api/utils";
+import invest from "./routes/api/invest";
 
 import connectDB from "./lib/dbConnect";
 import dotenv from "dotenv";
@@ -23,14 +25,16 @@ app.use(express.urlencoded({ extended: false }));
 // app.use("/static", express.static(__dirname + "/public"));
 
 app.use("/api/user", user);
-// 
+app.use("/api/ico/invest", invest);
+app.use("/api/utils", utils);
+
 
 async function startServer () {
   try {
     await Moralis.start({
       apiKey: process.env.MORALIS_API_KEY,
     });
-    console.log("moralis start....")
+    console.log("moralis start....");
   
     app.listen(port, () => {
       console.log(`Server is listening on ${port}`);

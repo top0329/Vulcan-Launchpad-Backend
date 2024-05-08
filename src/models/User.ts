@@ -6,21 +6,20 @@ interface Accounts {
   description: string;
 }
 export interface IUser extends Document {
-  // username: string;
   wallet: string;
   fullName: string,
   company: string,
-  socialLink: string,
   bio: string,
   avatar: string,
-  ip: string;
-  created: Date
-  // facebook: string,
-  // twitter: string,
-  // instagram: string,
-  // linkedin: string,
+  ip: string,
+  created: Date,
+  facebook: string,
+  twitter: string,
+  instagram: string,
+  linkedin: string,
+  farcaster: string,
+  lens: string
 }
-
 interface IUserModel extends Model<IUser> {}
 
 const UserSchema: Schema = new Schema({
@@ -45,31 +44,24 @@ const UserSchema: Schema = new Schema({
   },
   website: {
     type: String,
-    required: true,
   },
   twitter: {
     type: String,
-    required: true,
   },
   linkedin: {
     type: String,
-    required: true,
   },
   facebook: {
     type: String,
-    required: true,
   },
   instagram: {
     type: String,
-    required: true,
   },
   farcaster: {
     type: String,
-    required: true,
   },
   lens: {
     type: String,
-    required: true,
   },
   bio: {
     type: String,
@@ -79,27 +71,6 @@ const UserSchema: Schema = new Schema({
     type: Date,
     default: Date.now
   }
-  // username: {
-  //   type: String,
-  //   required: true,
-  // },
-  // facebook: {
-    //   type: String,
-    //   required: true,
-  // },
-  // twitter: {
-  //   type: String,
-  //   required: true,
-  // },
-  // instagram: {
-  //   type: String,
-  //   required: true,
-  // },
-  // linkedin: {
-  //   type: String,
-  //   required: true,
-  // },
-  
 });
 
 UserSchema.methods.encryptPassword = (password: string) =>
